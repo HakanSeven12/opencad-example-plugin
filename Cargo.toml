@@ -1,0 +1,19 @@
+[package]
+name = "opencad-example-plugin"
+version = "0.1.0"
+edition = "2021"
+description = "Reference external add-on for Open CAD Studio — distributed as a prebuilt cdylib via GitHub Releases."
+license = "GPL-3.0-only"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# The stable contract, fetched from the OpenCADStudio repo. The `host` feature
+# adds the runtime HostApi / BuiltinPlugin surface.
+ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", features = ["host"] }
+
+# Match the host's acadrust so the loaded library is binary-compatible
+# (approach B assumes the same toolchain + dependency versions).
+[patch.crates-io]
+acadrust = { git = "https://github.com/HakanSeven12/acadrust", branch = "main" }

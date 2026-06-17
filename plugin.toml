@@ -1,0 +1,13 @@
+[plugin]
+id = "opencad.example"
+name = "Example Plugin"
+version = "0.1.0"
+description = "Reference dynamically-loaded add-on"
+author = "Open CAD Studio contributors"
+license = "GPL-3.0-only"
+
+[opencad]
+api_version = 1
+ribbon_order = 50
+command_prefixes = ["EX_"]
+xdata_apps = []
