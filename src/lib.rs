@@ -12,7 +12,7 @@ use ocs_plugin_api::ribbon::{CadModule, IconKind, ModuleEvent, RibbonGroup, Ribb
 static MANIFEST: PluginManifest = PluginManifest {
     id: "opencad.example",
     name: "Example Plugin",
-    version: "0.1.0",
+    version: "0.2.0",
     description: "Reference dynamically-loaded add-on",
     api_version: ApiVersion::CURRENT,
     ribbon_order: 50,

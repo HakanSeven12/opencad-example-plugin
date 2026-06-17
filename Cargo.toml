@@ -1,6 +1,6 @@
 [package]
 name = "opencad-example-plugin"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Reference external add-on for Open CAD Studio — distributed as a prebuilt cdylib via GitHub Releases."
 license = "GPL-3.0-only"
