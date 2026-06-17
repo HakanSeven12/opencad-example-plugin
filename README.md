@@ -24,3 +24,25 @@ assets. The host picks the asset matching the user's OS/arch and reads
 > Approach B: the binary must be built against the same toolchain and
 > `ocs_plugin_api` version as the host. The `ocs_plugin_api_version` symbol
 > gates the API version at load time.
+
+## Get listed in Open CAD Studio
+
+To make a plugin discoverable in the OCS **Plugin Manager → Available plugins**
+(so users install it without typing a repo), open a pull request adding an entry
+to [`plugins/registry.json`](https://github.com/HakanSeven12/OpenCADStudio/blob/main/plugins/registry.json)
+in the OpenCADStudio repo:
+
+```json
+{
+  "repo": "your-account/your-plugin-repo",
+  "name": "Human-readable name",
+  "description": "One line describing what it does."
+}
+```
+
+See [`plugins/README.md`](https://github.com/HakanSeven12/OpenCADStudio/blob/main/plugins/README.md)
+for the requirements. The registry is fetched from `main` at runtime, so a
+merged PR reaches every user without an app update.
+
+This repo is itself the first registry entry — use it as the template for your
+own plugin and release workflow.
