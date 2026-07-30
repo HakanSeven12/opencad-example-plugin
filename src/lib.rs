@@ -12,7 +12,7 @@ use ocs_plugin_api::ribbon::{CadModule, IconKind, ModuleEvent, RibbonGroup, Ribb
 static MANIFEST: PluginManifest = PluginManifest {
     id: "opencad.example",
     name: "Example Plugin",
-    version: "0.2.0",
+    version: env!("CARGO_PKG_VERSION"),
     description: "Reference dynamically-loaded add-on",
     api_version: ApiVersion::CURRENT,
     ribbon_order: 50,
@@ -30,16 +30,19 @@ impl CadModule for ExampleModule {
     fn title(&self) -> &'static str {
         "Example"
     }
-    fn ribbon_groups(&self) -> Vec<RibbonGroup> {
-        vec![RibbonGroup {
-            title: "Demo",
-            tools: vec![RibbonItem::LargeTool(ToolDef {
-                id: "EX_HELLO",
-                label: "Hello",
-                icon: IconKind::Glyph("◆"),
-                event: ModuleEvent::Command("EX_HELLO".to_string()),
-            })],
-        }]
+    fn ribbon_groups(&self) -> &[RibbonGroup] {
+        static GROUPS: std::sync::OnceLock<Vec<RibbonGroup>> = std::sync::OnceLock::new();
+        GROUPS.get_or_init(|| {
+            vec![RibbonGroup {
+                title: "Demo",
+                tools: vec![RibbonItem::LargeTool(ToolDef {
+                    id: "EX_HELLO",
+                    label: "Hello",
+                    icon: IconKind::Glyph("◆"),
+                    event: ModuleEvent::Command("EX_HELLO".to_string()),
+                })],
+            }]
+        })
     }
 }
 

@@ -24,6 +24,9 @@ assets. The host picks the asset matching the user's OS/arch and reads
 > Approach B: the binary must be built against the same toolchain and
 > `ocs_plugin_api` version as the host. The `ocs_plugin_api_version` symbol
 > gates the API version at load time.
+>
+> Release `v0.3.0` targets Open CAD Studio plugin API 3. Older releases remain
+> available for hosts that use earlier plugin APIs.
 
 ## Get listed in Open CAD Studio
 

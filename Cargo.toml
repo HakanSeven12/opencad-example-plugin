@@ -1,6 +1,6 @@
 [package]
 name = "opencad-example-plugin"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2021"
 description = "Reference external add-on for Open CAD Studio — distributed as a prebuilt cdylib via GitHub Releases."
 license = "GPL-3.0-only"
@@ -16,4 +16,4 @@ ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", featur
 # Match the host's acadrust so the loaded library is binary-compatible
 # (approach B assumes the same toolchain + dependency versions).
 [patch.crates-io]
-acadrust = { git = "https://github.com/HakanSeven12/acadrust", branch = "main" }
+acadrust = { git = "https://github.com/OpenAEC-Foundation/acadifc.git", rev = "a7b1e07" }

@@ -30,7 +30,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo build --release
+      - run: cargo build --release --locked
       - name: Stage release asset
         shell: bash
         run: |
