@@ -21,12 +21,19 @@ on Linux/Windows/macOS and uploads each binary plus `plugin.toml` as release
 assets. The host picks the asset matching the user's OS/arch and reads
 `plugin.toml` for the API-version compatibility check.
 
-> Approach B: the binary must be built against the same toolchain and
-> `ocs_plugin_api` version as the host. The `ocs_plugin_api_version` symbol
-> gates the API version at load time.
+> Approach B: the binary must be built with the same `rustc` and against the
+> same `opencadcodec` commit as the host. `Cargo.toml` pins `ocs_plugin_api` to
+> an OpenCADStudio commit, which also pins its `opencadcodec`; the release
+> workflow writes the compiler and the resolved `opencadcodec` source into the
+> shipped `plugin.toml` (`rustc_version`, `acadrust_source`), and the host
+> refuses a plugin whose fingerprint differs from its own.
 >
-> Release `v0.3.0` targets Open CAD Studio plugin API 3. Older releases remain
-> available for hosts that use earlier plugin APIs.
+> To follow a new Open CAD Studio release: set the `rev` in `Cargo.toml` to that
+> release's commit, run `cargo update -p ocs_plugin_api`, bump the version, and
+> tag with the same stable toolchain the host release was built with.
+>
+> Release `v0.4.0` targets plugin API 7. API 2 is no longer loaded by current
+> hosts.
 
 ## Get listed in Open CAD Studio
 

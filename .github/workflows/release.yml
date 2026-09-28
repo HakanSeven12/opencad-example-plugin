@@ -38,7 +38,23 @@ jobs:
           # The cdylib name varies by platform (lib*.so / *.dll / lib*.dylib);
           # the host loader accepts any name with the right extension.
           cp target/release/*.${{ matrix.ext }} "dist/${{ matrix.asset }}"
-          cp plugin.toml dist/plugin.toml
+          # API 4+ hosts load a plugin only when it was built by the same
+          # rustc against the same opencadcodec commit as the host. Record
+          # both in the shipped manifest.
+          python3 - "$(rustc --version)" <<'PY'
+          import re, sys
+          from pathlib import Path
+          lock = Path("Cargo.lock").read_text()
+          sources = re.findall(r'name = "opencadcodec"\nversion = "[^"]+"\nsource = "([^"]+)"', lock)
+          if len(sources) != 1:
+              raise SystemExit(f"expected one opencadcodec source in Cargo.lock, found {len(sources)}")
+          manifest = Path("plugin.toml").read_text()
+          manifest = manifest.replace("__RUSTC_VERSION__", sys.argv[1])
+          manifest = manifest.replace("__ACADRUST_SOURCE__", sources[0])
+          if "__" in manifest:
+              raise SystemExit("unresolved plugin.toml placeholder")
+          Path("dist/plugin.toml").write_text(manifest)
+          PY
       - uses: softprops/action-gh-release@v2
         with:
           files: |

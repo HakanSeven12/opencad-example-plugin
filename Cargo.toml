@@ -1,6 +1,6 @@
 [package]
 name = "opencad-example-plugin"
-version = "0.3.0"
+version = "0.4.0"
 edition = "2021"
 description = "Reference external add-on for Open CAD Studio — distributed as a prebuilt cdylib via GitHub Releases."
 license = "GPL-3.0-only"
@@ -10,10 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 # The stable contract, fetched from the OpenCADStudio repo. The `host` feature
-# adds the runtime HostApi / BuiltinPlugin surface.
-ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", features = ["host"] }
-
-# Match the host's acadrust so the loaded library is binary-compatible
-# (approach B assumes the same toolchain + dependency versions).
-[patch.crates-io]
-acadrust = { git = "https://github.com/OpenAEC-Foundation/acadifc.git", rev = "a7b1e07" }
+# adds the runtime HostApi / BuiltinPlugin surface. Pin the commit of the host
+# release you target: it also pins the opencadcodec revision, and the host only
+# loads a plugin built against the same opencadcodec commit and rustc.
+ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", rev = "3754426361e828cb4c0300cb5b36138d623aebfc", features = ["host"] }

@@ -38,7 +38,7 @@ impl CadModule for ExampleModule {
                 tools: vec![RibbonItem::LargeTool(ToolDef {
                     id: "EX_HELLO",
                     label: "Hello",
-                    icon: IconKind::Glyph("◆"),
+                    icon: IconKind::Svg(include_bytes!("../assets/hello.svg")),
                     event: ModuleEvent::Command("EX_HELLO".to_string()),
                 })],
             }]
