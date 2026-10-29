@@ -8,12 +8,7 @@ license = "GPL-3.0-only"
 repository = "HakanSeven12/opencad-example-plugin"
 
 [opencad]
-api_version = 7
-# Filled by the release workflow from the compiler that built the library and
-# the opencadcodec source resolved in Cargo.lock. API 4+ hosts load a plugin
-# only when both match their own build.
-rustc_version = "__RUSTC_VERSION__"
-acadrust_source = "__ACADRUST_SOURCE__"
+api_version = 14
 ribbon_order = 50
 command_prefixes = ["EX_"]
 xdata_apps = []

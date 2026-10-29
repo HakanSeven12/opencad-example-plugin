@@ -10,7 +10,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 # The stable contract, fetched from the OpenCADStudio repo. The `host` feature
-# adds the runtime HostApi / BuiltinPlugin surface. Pin the commit of the host
-# release you target: it also pins the opencadcodec revision, and the host only
-# loads a plugin built against the same opencadcodec commit and rustc.
-ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", rev = "3754426361e828cb4c0300cb5b36138d623aebfc", features = ["host"] }
+# adds the runtime HostApi / BuiltinPlugin surface. From API 14 the plugin runs
+# its own runner loop, so it need not share the host's compiler or codec
+# commit; hosts whose codec types have the same wire shapes load it.
+ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", rev = "63045954c4b75cbed764a5d044836c2d393de4f4", features = ["host"] }
