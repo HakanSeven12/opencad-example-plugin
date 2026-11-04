@@ -5,7 +5,7 @@ version = 4
 [[package]]
 name = "acadrust"
 version = "0.6.8"
-source = "git+https://github.com/HakanSeven12/acadrust.git?rev=75dd8f5#75dd8f5cd3b5dd2c56d9c9d4e8c14b816d31d68d"
+source = "git+https://github.com/HakanSeven12/acadrust.git?rev=d6d7e132#d6d7e13224af4f3b6978cb3a3ccc8c4cce8b3b11"
 dependencies = [
  "anyhow",
  "bitflags",
@@ -530,7 +530,7 @@ dependencies = [
 [[package]]
 name = "ocs_plugin_api"
 version = "0.2.1"
-source = "git+https://github.com/HakanSeven12/OpenCADStudio?rev=63045954c4b75cbed764a5d044836c2d393de4f4#63045954c4b75cbed764a5d044836c2d393de4f4"
+source = "git+https://github.com/HakanSeven12/OpenCADStudio?rev=41ff6a460bac250e7bef886fba6aa617a2783722#41ff6a460bac250e7bef886fba6aa617a2783722"
 dependencies = [
  "bincode",
  "cargo-lock",
@@ -564,7 +564,7 @@ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
 
 [[package]]
 name = "opencad-example-plugin"
-version = "0.4.0"
+version = "0.5.0"
 dependencies = [
  "ocs_plugin_api",
 ]
@@ -572,7 +572,7 @@ dependencies = [
 [[package]]
 name = "opencaddocument"
 version = "0.1.0"
-source = "git+https://github.com/HakanSeven12/opencaddocument.git?rev=e6135a7#e6135a72ec46046cd23a84df1b13c8b4fe9541f2"
+source = "git+https://github.com/HakanSeven12/opencaddocument.git?rev=fb29ea0#fb29ea0d24e31a2e212209c9b9c9802797eded47"
 dependencies = [
  "acadrust",
  "serde",

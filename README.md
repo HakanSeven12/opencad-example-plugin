@@ -21,19 +21,15 @@ on Linux/Windows/macOS and uploads each binary plus `plugin.toml` as release
 assets. The host picks the asset matching the user's OS/arch and reads
 `plugin.toml` for the API-version compatibility check.
 
-> Approach B: the binary must be built with the same `rustc` and against the
-> same `opencadcodec` commit as the host. `Cargo.toml` pins `ocs_plugin_api` to
-> an OpenCADStudio commit, which also pins its `opencadcodec`; the release
-> workflow writes the compiler and the resolved `opencadcodec` source into the
-> shipped `plugin.toml` (`rustc_version`, `acadrust_source`), and the host
-> refuses a plugin whose fingerprint differs from its own.
+> From plugin API 14 the plugin runs its own runner loop, so it need not be
+> built with the host's compiler or against its codec commit: any host whose
+> codec types have the same wire shapes loads it. `Cargo.toml` pins
+> `ocs_plugin_api` to an OpenCADStudio commit; to follow a new API, set that
+> `rev`, run `cargo update -p ocs_plugin_api`, bump the version and tag.
 >
-> To follow a new Open CAD Studio release: set the `rev` in `Cargo.toml` to that
-> release's commit, run `cargo update -p ocs_plugin_api`, bump the version, and
-> tag with the same stable toolchain the host release was built with.
->
-> Release `v0.4.0` targets plugin API 7. API 2 is no longer loaded by current
-> hosts.
+> Release `v0.5.0` targets plugin API 15: besides the **Example** tab it adds a
+> quad cursor menu panel on lines (**Hello** runs `EX_HELLO`, **Count** calls
+> back with the lines under the quad).
 
 ## Get listed in Open CAD Studio
 
