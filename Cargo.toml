@@ -13,4 +13,4 @@ crate-type = ["cdylib"]
 # adds the runtime HostApi / BuiltinPlugin surface. From API 14 the plugin runs
 # its own runner loop, so it need not share the host's compiler or codec
 # commit; hosts whose codec types have the same wire shapes load it.
-ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", rev = "41ff6a460bac250e7bef886fba6aa617a2783722", features = ["host"] }
+ocs_plugin_api = { git = "https://github.com/HakanSeven12/OpenCADStudio", rev = "03e4c1324", features = ["host"] }
